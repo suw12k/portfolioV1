@@ -1,0 +1,617 @@
+/* KALI LINUX TERMINAL THEME */
+:root {
+    --kali-bg: #0c0c0c;
+    --kali-bg-light: #141414;
+    --kali-green: #00ff00;
+    --kali-green-dim: #00cc00;
+    --kali-red: #ff0000;
+    --kali-red-soft: #cc0000;
+    --kali-blue: #0000ff;
+    --kali-text: #e0e0e0;
+    --kali-gray: #808080;
+    --kali-border: #333333;
+    --terminal-header: #2d2d2d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--kali-bg);
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background-color: var(--kali-bg);
+    color: var(--kali-green);
+    line-height: 1.6;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+
+/* Effet CRT scanlines */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.2) 50%,
+        rgba(0,0,0,0.2)
+    );
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,255,0,0.03) 0%, transparent 70%);
+    z-index: 9998;
+    pointer-events: none;
+}
+
+/* Navigation style Kali */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--kali-bg-light);
+    border-bottom: 1px solid var(--kali-border);
+    z-index: 1000;
+    padding: 0.8rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--kali-green);
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(0,255,0,0.3);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--kali-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--kali-green);
+    text-shadow: 0 0 5px var(--kali-green);
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: var(--kali-bg-light);
+    border: 1px solid var(--kali-border);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,255,0,0.1);
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: var(--terminal-header);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--kali-border);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-term {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
+
+.btn-term.close { background: #ff5f56; }
+.btn-term.minimize { background: #ffbd2e; }
+.btn-term.maximize { background: #27c93f; }
+
+.terminal-title {
+    color: var(--kali-gray);
+    font-size: 0.85rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terminal-body {
+    padding: 2rem;
+    background: var(--kali-bg);
+}
+
+.terminal-line {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Prompt styling */
+.prompt-user { color: #00ff00; font-weight: bold; }
+.prompt-separator { color: var(--kali-text); }
+.prompt-path { color: #0000ff; font-weight: bold; }
+.prompt-symbol { color: var(--kali-text); margin-right: 0.5rem; }
+
+.cmd {
+    color: var(--kali-text);
+}
+
+.terminal-output {
+    color: var(--kali-gray);
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 2px solid var(--kali-border);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.highlight {
+    color: var(--kali-green);
+    font-weight: bold;
+}
+
+/* Hero Content */
+.hero-content-terminal {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--kali-border);
+}
+
+.glitch-kali {
+    color: var(--kali-green);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(0,255,0,0.2);
+    letter-spacing: -1px;
+}
+
+.typing-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.typing-text {
+    color: var(--kali-text);
+}
+
+.cursor-kali {
+    color: var(--kali-green);
+    animation: blink-kali 1s step-end infinite;
+    font-weight: normal;
+}
+
+@keyframes blink-kali {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Buttons Kali */
+.terminal-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.btn-kali {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--kali-green);
+    color: var(--kali-green);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-kali:hover {
+    background: rgba(0,255,0,0.1);
+    box-shadow: 0 0 15px rgba(0,255,0,0.3);
+    transform: translateY(-2px);
+}
+
+.btn-kali-alt {
+    border-color: var(--kali-red-soft);
+    color: var(--kali-red-soft);
+}
+
+.btn-kali-alt:hover {
+    background: rgba(255,0,0,0.1);
+    box-shadow: 0 0 15px rgba(255,0,0,0.3);
+}
+
+/* Sections Terminal */
+.terminal-section {
+    padding: 4rem 10%;
+    background: var(--kali-bg);
+    border-top: 1px solid var(--kali-border);
+}
+
+.section-header {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--kali-border);
+}
+
+.terminal-content {
+    padding-left: 1rem;
+}
+
+/* ASCII Art */
+.profile-ascii {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: var(--kali-green);
+    background: var(--kali-bg-light);
+    padding: 1rem;
+    border: 1px solid var(--kali-border);
+    overflow-x: auto;
+}
+
+.ascii-art {
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre;
+    color: var(--kali-green);
+}
+
+/* File content styling */
+.file-content {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.comment { color: var(--kali-gray); font-style: italic; }
+.variable { color: #ff79c6; } /* Rose pour variables */
+.string { color: #f1fa8c; } /* Jaune pour strings */
+.number { color: #bd93f9; } /* Violet pour nombres */
+.keyword { color: #ff79c6; } /* Rose pour keywords */
+.text-content { color: var(--kali-text); }
+
+/* Status Terminal */
+.status-terminal {
+    background: var(--kali-bg-light);
+    border: 1px solid var(--kali-border);
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.status-line {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.status-ok { color: var(--kali-green); font-weight: bold; margin-right: 0.5rem; }
+.status-warn { color: #ffaa00; font-weight: bold; margin-right: 0.5rem; }
+
+/* Skills as Packages */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.skill-pkg {
+    background: var(--kali-bg-light);
+    border: 1px solid var(--kali-border);
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.skill-pkg:hover {
+    border-color: var(--kali-green);
+    box-shadow: 0 0 10px rgba(0,255,0,0.1);
+}
+
+.pkg-name {
+    color: var(--kali-green);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.pkg-version {
+    color: var(--kali-gray);
+    font-size: 0.8rem;
+    float: right;
+}
+
+.pkg-desc {
+    color: var(--kali-text);
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+}
+
+.pkg-bar {
+    height: 2px;
+    background: var(--kali-border);
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.pkg-fill {
+    height: 100%;
+    background: var(--kali-green);
+    box-shadow: 0 0 5px var(--kali-green);
+    transition: width 1.5s ease-out;
+}
+
+/* Projects as ls -la */
+.projects-list {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: 100px 100px 80px 80px 1fr 200px;
+    gap: 1rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--kali-border);
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.project-item:hover {
+    background: rgba(0,255,0,0.05);
+}
+
+.project-perms { color: var(--kali-green); }
+.project-owner { color: var(--kali-gray); }
+.project-size { color: var(--kali-text); text-align: right; }
+.project-date { color: var(--kali-gray); }
+.project-name { 
+    color: #0000ff; 
+    font-weight: bold;
+    cursor: pointer;
+}
+.project-name:hover {
+    text-decoration: underline;
+}
+.project-desc { 
+    color: var(--kali-gray); 
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Certs as systemctl status */
+.certs-terminal {
+    font-size: 0.95rem;
+}
+
+.cert-line {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-left: 3px solid var(--kali-border);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.cert-line:hover {
+    background: rgba(0,255,0,0.05);
+    border-left-color: var(--kali-green);
+}
+
+.cert-status {
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.status-success { border-left-color: var(--kali-green) !important; }
+.status-success .cert-status { color: var(--kali-green); }
+
+.status-pending { border-left-color: #ffaa00 !important; }
+.status-pending .cert-status { color: #ffaa00; }
+
+.status-target { border-left-color: var(--kali-red-soft) !important; }
+.status-target .cert-status { color: var(--kali-red-soft); }
+
+.cert-name {
+    color: var(--kali-text);
+    font-weight: 600;
+    min-width: 150px;
+}
+
+.cert-issuer {
+    color: var(--kali-gray);
+    font-size: 0.9rem;
+}
+
+/* Contact Form */
+.contact-form-terminal {
+    max-width: 600px;
+}
+
+.form-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.prompt-form {
+    color: var(--kali-green);
+    min-width: 80px;
+    font-weight: bold;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--kali-border);
+    color: var(--kali-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.terminal-input:focus {
+    border-bottom-color: var(--kali-green);
+    box-shadow: 0 2px 0 rgba(0,255,0,0.2);
+}
+
+.textarea-line {
+    align-items: flex-start;
+}
+
+.terminal-textarea {
+    min-height: 100px;
+    resize: vertical;
+    border: 1px solid var(--kali-border);
+    background: var(--kali-bg-light);
+    padding: 1rem;
+}
+
+.btn-kali-submit {
+    background: var(--kali-green);
+    color: var(--kali-bg);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-kali-submit:hover {
+    box-shadow: 0 0 20px rgba(0,255,0,0.4);
+    transform: scale(1.05);
+}
+
+/* Footer */
+.terminal-footer {
+    background: var(--kali-bg-light);
+    border-top: 1px solid var(--kali-border);
+    padding: 2rem 10%;
+    text-align: center;
+}
+
+.footer-line {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-cmd {
+    color: var(--kali-gray);
+}
+
+.social-terminal {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: var(--kali-green);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--kali-border);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+.social-link:hover {
+    border-color: var(--kali-green);
+    background: rgba(0,255,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-item {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+        padding: 1rem;
+        border: 1px solid var(--kali-border);
+        margin-bottom: 1rem;
+    }
+    
+    .project-desc {
+        margin-top: 0.5rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .terminal-window {
+        width: 95%;
+    }
+    
+    .ascii-art {
+        font-size: 0.6rem;
+    }
+    
+    .form-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Selection style Kali */
+::selection {
+    background: var(--kali-green);
+    color: var(--kali-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--kali-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--kali-border);
+    border: 1px solid var(--kali-green);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--kali-green);
+}
