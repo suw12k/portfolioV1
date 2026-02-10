@@ -3,292 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>root@kali:~# Laszlo Chomel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Laszlo Chomel - Cybersecurity Portfolio | Pentesting | Security Analysis">
+    <title>Laszlo Chomel | Cybersecurity Engineer</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="crt-overlay"></div>
-    <div class="scanlines"></div>
-
-    <nav>
-        <a href="#" class="logo">root@kali:~#</a>
-        <ul class="nav-links">
-            <li><a href="#about">whoami</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#projects">ls -la</a></li>
-            <li><a href="#certs">certs</a></li>
-            <li><a href="#contact">contact</a></li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">root@laszlo:~#</a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">01. About</a></li>
+                <li><a href="#experience" class="nav-link">02. Experience</a></li>
+                <li><a href="#skills" class="nav-link">03. Skills</a></li>
+                <li><a href="#projects" class="nav-link">04. Projects</a></li>
+                <li><a href="#certifications" class="nav-link">05. Certs</a></li>
+                <li><a href="#contact" class="nav-link">06. Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
     </nav>
 
-    <section id="hero">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="btn-term close"></span>
-                    <span class="btn-term minimize"></span>
-                    <span class="btn-term maximize"></span>
-                </div>
-                <div class="terminal-title">laszlo@kali: ~</div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <p class="hero-subtitle">Hi, my name is</p>
+            <h1 class="hero-title">Laszlo Chomel.</h1>
+            <h2 class="hero-subject">I build secure systems.</h2>
+            <p class="hero-description">
+                I'm a cybersecurity student specializing in <span class="highlight">offensive security</span> and 
+                <span class="highlight">network defense</span>. Currently, I'm focused on vulnerability analysis 
+                and secure development while completing my BTS CIEL.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Check out my work</a>
+                <a href="#contact" class="btn btn-outline">Get in touch</a>
             </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">#</span> 
-                    <span class="cmd">./generate_portfolio.sh</span>
-                </div>
-                <div class="terminal-output">
-                    [INFO] Initializing system...<br>
-                    [OK] Loading profile: <span class="highlight">Laszlo Chomel</span><br>
-                    [OK] Bac Pro CIEL detected<br>
-                    [OK] Age: 17 years<br>
-                    [WARN] Security enthusiast detected
-                </div>
-                
-                <div class="hero-content-terminal">
-                    <h1 class="glitch-kali" data-text="LASZLO CHOMEL">LASZLO CHOMEL</h1>
-                    <div class="typing-container">
-                        <span class="prompt-user">laszlo@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/portfolio</span><span class="prompt-symbol">$</span> 
-                        <span id="typing" class="typing-text"></span><span class="cursor-kali">█</span>
+            <div class="terminal-window hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="terminal-actions">
-                        <a href="#projects" class="btn-kali">./execute_projects.sh</a>
-                        <a href="#contact" class="btn-kali btn-kali-alt">mail -s "Stage" laszlo</a>
-                    </div>
+                    <span class="terminal-title">laszlo@kali:~/portfolio</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">laszlo@kali:~$</span> <span class="command" id="typing-text"></span><span class="cursor">|</span></p>
+                    <p class="output-text" style="display: none;">
+                        <span class="success">[+] System initialized...</span><br>
+                        <span class="info">[*] Location: Malakoff, France</span><br>
+                        <span class="warning">[!] Status: Available for internship</span><br>
+                        <span class="success">[+] Stack: React, Node.js, Cybersecurity, Pentesting</span>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="terminal-section">
-        <div class="terminal-line section-header">
-            <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/about</span><span class="prompt-symbol">#</span> 
-            <span class="cmd">cat profil.txt</span>
-        </div>
-        
-        <div class="about-grid terminal-content">
-            <div class="profile-ascii">
-                <pre class="ascii-art">
-    ┌─────────────────────────────┐
-    │  ┌─────┐                    │
-    │  │ 👤  │  Laszlo Chomel     │
-    │  │     │  17 ans             │
-    │  └─────┘  Bac Pro CIEL      │
-    │         │                   │
-    │  [====]  Cybersécurité      │
-    │  [====]  Réseaux            │
-    │  [    ]  Electronique       │
-    └─────────────────────────────┘
-                </pre>
-            </div>
-            <div class="about-text">
-                <div class="file-content">
-                    <span class="comment"># Profil étudiant</span><br>
-                    <span class="variable">NOM</span>=<span class="string">"Laszlo Chomel"</span><br>
-                    <span class="variable">AGE</span>=<span class="number">17</span><br>
-                    <span class="variable">FORMATION</span>=<span class="string">"Bac Pro CIEL"</span><br>
-                    <span class="variable">SPECIALITE</span>=<span class="string">"Cybersécurité & Réseaux"</span><br><br>
-                    
-                    <span class="comment"># Description</span><br>
-                    <span class="text-content">
-                    Étudiant passionné par la sécurité offensive et défensive. <br>
-                    Je développe mes compétences en parallèle de ma formation <br>
-                    via des home labs, CTF et certifications (SecNum, CCNA).<br><br>
-                    </span>
-                    
-                    <span class="comment"># Statut actuel</span><br>
-                    <span class="keyword">echo</span> <span class="string">"Recherche stage ou alternance"</span>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title"><span class="number">01.</span> About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Hello! I'm Laszlo, a cybersecurity enthusiast based in Malakoff, France. 
+                        My interest in cybersecurity started back in 2022 when I discovered the world of 
+                        CTF (Capture The Flag) competitions and ethical hacking.
+                    </p>
+                    <p>
+                        Fast-forward to today, and I've had the privilege of working at an 
+                        <span class="highlight">IT repair shop</span>, a 
+                        <span class="highlight">software development company</span>, and winning a 
+                        <span class="highlight">bronze medal at the Tenexa Hackathon</span>.
+                    </p>
+                    <p>
+                        My main focus these days is building secure applications and analyzing 
+                        vulnerabilities. I enjoy working at the intersection of development and security.
+                    </p>
+                    <p>Here are a few technologies I've been working with recently:</p>
+                    <ul class="skills-list">
+                        <li>JavaScript (React & Node.js)</li>
+                        <li>Python (Security scripts)</li>
+                        <li>Java</li>
+                        <li>Kali Linux / Parrot OS</li>
+                        <li>TryHackMe / HackTheBox</li>
+                        <li>Wireshark & Nmap</li>
+                    </ul>
                 </div>
-                
-                <div class="status-terminal">
-                    <div class="status-line">
-                        <span class="status-ok">[OK]</span> Formation: Bac Pro CIEL 2ème année
-                    </div>
-                    <div class="status-line">
-                        <span class="status-ok">[OK]</span> Localisation: France
-                    </div>
-                    <div class="status-line">
-                        <span class="status-warn">[!]</span> Disponible: Immédiatement
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <div class="image-border"></div>
+                        <div class="image-content">
+                            <span class="ascii-art">
+    [HACKER]
+    ┌─────────┐
+    │  ◠  ◠   │
+    │    ▽    │
+    │  ┌───┐  │
+    │  │   │  │
+    └─────────┘
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="terminal-section">
-        <div class="terminal-line section-header">
-            <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/skills</span><span class="prompt-symbol">#</span> 
-            <span class="cmd">apt list --installed</span>
-        </div>
-        
-        <div class="skills-grid">
-            <div class="skill-pkg">
-                <div class="pkg-name">securite-base</div>
-                <div class="pkg-version">1.0.0</div>
-                <div class="pkg-desc">SecNum Académie [██████████] 100%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 100%"></div></div>
-            </div>
-            
-            <div class="skill-pkg">
-                <div class="pkg-name">network-tools</div>
-                <div class="pkg-version">0.8.5</div>
-                <div class="pkg-desc">CCNA ITN [███████░░░] 70%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 70%"></div></div>
-            </div>
-            
-            <div class="skill-pkg">
-                <div class="pkg-name">python3-pentest</div>
-                <div class="pkg-version">0.7.2</div>
-                <div class="pkg-desc">Scripting [███████░░░] 75%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 75%"></div></div>
-            </div>
-            
-            <div class="skill-pkg">
-                <div class="pkg-name">linux-core</div>
-                <div class="pkg-version">0.9.0</div>
-                <div class="pkg-desc">Debian/Kali [███████░░░] 70%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 70%"></div></div>
-            </div>
-            
-            <div class="skill-pkg">
-                <div class="pkg-name">cisco-ios</div>
-                <div class="pkg-version">0.6.0</div>
-                <div class="pkg-desc">Switch/Routeur [██████░░░░] 60%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 60%"></div></div>
-            </div>
-            
-            <div class="skill-pkg">
-                <div class="pkg-name">virtualbox</div>
-                <div class="pkg-version">1.0.0</div>
-                <div class="pkg-desc">Virtualisation [████████░░] 80%</div>
-                <div class="pkg-bar"><div class="pkg-fill" style="width: 80%"></div></div>
+    <!-- Experience Section -->
+    <section id="experience" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title"><span class="number">02.</span> Where I've Worked</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>IT Technician Intern</h3>
+                        <span class="experience-date">Jul 2024 - Dec 2024</span>
+                    </div>
+                    <div class="experience-company">@ ACI 21, Paris</div>
+                    <ul class="experience-list">
+                        <li>Diagnosed and repaired laptops and desktop computers</li>
+                        <li>Managed customer relations and technical consulting</li>
+                        <li>Handled inventory systems and quote management</li>
+                        <li>Implemented dual-boot Windows/Linux configurations</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Software Developer Intern</h3>
+                        <span class="experience-date">Jan 2024 - Jun 2024</span>
+                    </div>
+                    <div class="experience-company">@ Eurekles, Paris</div>
+                    <ul class="experience-list">
+                        <li>Developed web applications using React.js frontend</li>
+                        <li>Created backend API integrations with Node.js</li>
+                        <li>Built Identity Management (IDM) interfaces for enterprise devices</li>
+                        <li>Collaborated with security team on authentication flows</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Observation Intern</h3>
+                        <span class="experience-date">Feb 2022</span>
+                    </div>
+                    <div class="experience-company">@ Librairie Hélio Presse, Hericy</div>
+                    <ul class="experience-list">
+                        <li>Customer service and sales operations</li>
+                        <li>Stock management and logistics</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="terminal-section">
-        <div class="terminal-line section-header">
-            <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/projects</span><span class="prompt-symbol">#</span> 
-            <span class="cmd">ls -la</span>
-        </div>
-        
-        <div class="projects-list">
-            <div class="project-item">
-                <div class="project-perms">drwxr-xr-x</div>
-                <div class="project-owner">root root</div>
-                <div class="project-size">4.0K</div>
-                <div class="project-date">Oct 24</div>
-                <div class="project-name">home_lab_security/</div>
-                <div class="project-desc"># DMZ, pfSense, Kali VMs</div>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-perms">-rwxr-xr-x</div>
-                <div class="project-owner">root root</div>
-                <div class="project-size">12K</div>
-                <div class="project-date">Nov 12</div>
-                <div class="project-name">scanner_port.py</div>
-                <div class="project-desc"># Scanner TCP en Python</div>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-perms">drwxr-xr-x</div>
-                <div class="project-owner">root root</div>
-                <div class="project-size">8.0K</div>
-                <div class="project-date">Dec 05</div>
-                <div class="project-name">infra_ciel/</div>
-                <div class="project-desc"># Projet Cisco & Windows AD</div>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-perms">-rw-r--r--</div>
-                <div class="project-owner">root root</div>
-                <div class="project-size">2.1K</div>
-                <div class="project-date">Jan 15</div>
-                <div class="project-name">ctf_writeups.md</div>
-                <div class="project-desc"># FCSC & CyberEdu</div>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title"><span class="number">03.</span> Technical Arsenal</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Offensive Security</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Penetration Testing</span>
+                        <span class="tag">Vulnerability Analysis</span>
+                        <span class="tag">Network Scanning (Nmap)</span>
+                        <span class="tag">TryHackMe</span>
+                        <span class="tag">CTF Competitions</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <div class="skill-tags">
+                        <span class="tag">JavaScript/TypeScript</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Systems & Hardware</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Linux Administration</span>
+                        <span class="tag">PC Assembly</span>
+                        <span class="tag">Hardware Diagnostics</span>
+                        <span class="tag">LAN Configuration</span>
+                        <span class="tag">Windows Server</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Metasploit</span>
+                        <span class="tag">Burp Suite</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">VS Code</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="certs" class="terminal-section">
-        <div class="terminal-line section-header">
-            <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/certifications</span><span class="prompt-symbol">#</span> 
-            <span class="cmd">verify --check-all</span>
-        </div>
-        
-        <div class="certs-terminal">
-            <div class="cert-line status-success">
-                <span class="cert-status">[VALID]</span> 
-                <span class="cert-name">SecNum Académie</span> 
-                <span class="cert-issuer">ANSSI</span>
-            </div>
-            <div class="cert-line status-pending">
-                <span class="cert-status">[IN_PROGRESS]</span> 
-                <span class="cert-name">CCNA ITN</span> 
-                <span class="cert-issuer">Cisco</span>
-            </div>
-            <div class="cert-line status-success">
-                <span class="cert-status">[VALID]</span> 
-                <span class="cert-name">PIX</span> 
-                <span class="cert-issuer">France</span>
-            </div>
-            <div class="cert-line status-success">
-                <span class="cert-status">[VALID]</span> 
-                <span class="cert-name">RSI</span> 
-                <span class="cert-issuer">Bac Pro</span>
-            </div>
-            <div class="cert-line status-target">
-                <span class="cert-status">[TARGET]</span> 
-                <span class="cert-name">eJPT</span> 
-                <span class="cert-issuer">eLearnSecurity</span>
+    <!-- Projects Section -->
+    <section id="projects" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title"><span class="number">04.</span> Notable Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div class="project-icon">🏆</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="External Link">↗</a>
+                            <a href="#" class="project-link" title="GitHub">⌘</a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Tenexa Hackathon Platform</h3>
+                    <p class="project-description">
+                        Full-stack recruitment platform with AI integration for automated profile selection. 
+                        Won bronze medal for technical innovation and secure API implementation.
+                    </p>
+                    <ul class="project-tech">
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>REST API</li>
+                        <li>AI Integration</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔒</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="GitHub">⌘</a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Security Scanner (Java)</h3>
+                    <p class="project-description">
+                        Java-based port scanner for security auditing with multi-threading support 
+                        and service detection capabilities.
+                    </p>
+                    <ul class="project-tech">
+                        <li>Java</li>
+                        <li>Socket Programming</li>
+                        <li>Networking</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🎮</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="External">↗</a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">3D Game Development</h3>
+                    <p class="project-description">
+                        Unity-based 3D game with custom mechanics programming and character animation systems.
+                        Iterative development methodology.
+                    </p>
+                    <ul class="project-tech">
+                        <li>Unity</li>
+                        <li>C#</li>
+                        <li>Game Design</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔐</div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="GitHub">⌘</a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">SecureAuth (Java)</h3>
+                    <p class="project-description">
+                        Password hashing implementation using SHA-256 with salt generation for secure 
+                        authentication systems.
+                    </p>
+                    <ul class="project-tech">
+                        <li>Java</li>
+                        <li>Cryptography</li>
+                        <li>SHA-256</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="terminal-section">
-        <div class="terminal-line section-header">
-            <span class="prompt-user">root@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~/contact</span><span class="prompt-symbol">#</span> 
-            <span class="cmd">sendmail --recruiter</span>
-        </div>
-        
-        <div class="contact-form-terminal">
-            <form id="contact-form">
-                <div class="form-line">
-                    <span class="prompt-form">name:</span>
-                    <input type="text" class="terminal-input" placeholder="Votre entreprise" required>
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title"><span class="number">05.</span> Certifications & Education</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-status">In Progress</div>
+                    <h3>BTS CIEL</h3>
+                    <p>Cybersecurity, IT, Electronics & Networks</p>
+                    <span class="cert-date">2024 - 2027</span>
+                    <div class="cert-highlight">Bronze Medal - Tenexa Hackathon 2025</div>
                 </div>
-                <div class="form-line">
-                    <span class="prompt-form">email:</span>
-                    <input type="email" class="terminal-input" placeholder="contact@entreprise.com" required>
+                <div class="cert-card">
+                    <div class="cert-status completed">Active</div>
+                    <h3>TryHackMe Academy</h3>
+                    <p>Pentesting & Vulnerability Analysis</p>
+                    <span class="cert-date">2024 - 2025</span>
                 </div>
-                <div class="form-line">
-                    <span class="prompt-form">subject:</span>
-                    <input type="text" class="terminal-input" value="Proposition de stage/alternance" required>
+                <div class="cert-card">
+                    <div class="cert-status completed">Completed</div>
+                    <h3>Brevet des Collèges</h3>
+                    <p>Collège Henri Wallon, Malakoff</p>
+                    <span class="cert-date">2021</span>
                 </div>
-                <div class="form-line textarea-line">
-                    <span class="prompt-form">body:</span>
-                    <textarea class="terminal-input terminal-textarea" placeholder="Votre message ici..." required></textarea>
-                </div>
-                <div class="form-line submit-line">
-                    <span class="prompt-form">action:</span>
-                    <button type="submit" class="btn-kali-submit">[ENVOYER]</button>
-                </div>
-            </form>
+            </div>
         </div>
     </section>
 
-    <footer class="terminal-footer">
-        <div class="footer-line">
-            <span class="prompt-user">laszlo@kali</span><span class="prompt-separator">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span> 
-            <span class="footer-cmd">echo "© 2024 Laszlo Chomel - Bac Pro CIEL"</span>
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
+        <div class="container contact-container">
+            <h2 class="section-title"><span class="number">06.</span> Get In Touch</h2>
+            <p class="contact-text">
+                I'm currently looking for new opportunities in cybersecurity and software development. 
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:laszlochomel@gmail.com" class="btn btn-primary btn-large">Say Hello</a>
+            <div class="contact-info">
+                <p>laszlochomel@gmail.com</p>
+                <p>+33 7 67 26 80 00</p>
+                <p>92240 Malakoff, France</p>
+            </div>
         </div>
-        <div class="social-terminal">
-            <a href="#" class="social-link">github: laszlo-chomel</a>
-            <a href="#" class="social-link">linkedin: laszlo-chomel</a>
-            <a href="#" class="social-link">mail: contact@laszlo.dev</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Designed & Built by Laszlo Chomel<br>
+                <span class="footer-sub">Secured with ☕ and curiosity</span>
+            </p>
+            <div class="social-links-footer">
+                <a href="https://github.com/laszlochomel" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/laszlochomel" target="_blank">LinkedIn</a>
+                <a href="mailto:laszlochomel@gmail.com">Email</a>
+            </div>
         </div>
     </footer>
 

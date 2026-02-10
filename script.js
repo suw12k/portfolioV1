@@ -1,175 +1,107 @@
-// Matrix effect - Vert Kali pur
-const canvas = document.getElementById('matrix-canvas');
-if (canvas) {
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const chars = '01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = [];
-
-    for (let x = 0; x < columns; x++) {
-        drops[x] = Math.random() * canvas.height / fontSize;
-    }
-
-    function draw() {
-        ctx.fillStyle = 'rgba(12, 12, 12, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = '#00ff00';
-        ctx.font = fontSize + 'px monospace';
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = chars.charAt(Math.floor(Math.random() * chars.length));
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    }
-
-    setInterval(draw, 30);
-    
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-}
-
-// Typing effect - style commande terminal
-const phrases = [
-    "echo 'Bac Pro CIEL'",
-    "nmap -sV 127.0.0.1", 
-    "python3 exploit.py",
-    "ssh student@entreprise.com"
+// Typing effect in hero terminal
+const texts = [
+    "whoami",
+    "nmap -sV localhost",
+    "python3 security_scan.py",
+    "gcc exploit.c -o exploit",
+    "ssh root@192.168.1.1"
 ];
-let phraseIndex = 0;
+
+let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-const typingElement = document.getElementById('typing');
+const typingElement = document.getElementById('typing-text');
 
 function type() {
-    const currentPhrase = phrases[phraseIndex];
+    const currentText = texts[textIndex];
     
     if (isDeleting) {
-        typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
     } else {
-        typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
         charIndex++;
     }
-    
-    let typeSpeed = isDeleting ? 30 : 80;
-    
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        typeSpeed = 2000;
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000; // Pause at end
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
+        textIndex = (textIndex + 1) % texts.length;
         typeSpeed = 500;
     }
-    
+
     setTimeout(type, typeSpeed);
 }
 
-if (typingElement) {
-    type();
-}
+// Start typing effect when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(type, 1000);
+    
+    // Show terminal output after delay
+    setTimeout(() => {
+        const output = document.querySelector('.output-text');
+        if (output) {
+            output.style.display = 'block';
+        }
+    }, 3500);
+});
 
-// Command history effect sur les sections
+// Mobile menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Smooth scroll with offset for fixed header
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = 80;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add scroll reveal animation
 const observerOptions = {
-    threshold: 0.2
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateX(0)';
-            
-            // Animation des barres de progression
-            const fills = entry.target.querySelectorAll('.pkg-fill');
-            fills.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
+            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.terminal-section, .skill-pkg').forEach(el => {
-    el.style.opacity = '0.9';
-    el.style.transform = 'translateX(-10px)';
-    el.style.transition = 'all 0.5s ease';
+// Observe all cards
+document.querySelectorAll('.experience-card, .project-card, .cert-card, .skill-category').forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `all 0.6s ease ${index * 0.1}s`;
     observer.observe(el);
 });
-
-// Form submission - style terminal response
-document.getElementById('contact-form')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button');
-    const originalText = btn.textContent;
-    
-    btn.textContent = '[SENDING...]';
-    btn.style.opacity = '0.7';
-    
-    setTimeout(() => {
-        btn.textContent = '[200 OK] Message envoyé';
-        btn.style.background = '#00ff00';
-        btn.style.color = '#0c0c0c';
-        
-        // Ajouter une ligne de log
-        const logLine = document.createElement('div');
-        logLine.className = 'terminal-line';
-        logLine.innerHTML = '<span style="color: #00ff00">[SUCCESS]</span> Email transmis à laszlo@kali';
-        this.appendChild(logLine);
-        
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.opacity = '1';
-            btn.style.background = '';
-            btn.style.color = '';
-            this.reset();
-            logLine.remove();
-        }, 3000);
-    }, 1500);
-});
-
-// Konami code - easter egg Kali style
-let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-let konamiIndex = 0;
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        if (konamiIndex === konamiCode.length) {
-            document.body.style.filter = 'hue-rotate(180deg) brightness(1.2)';
-            setTimeout(() => {
-                document.body.style.filter = '';
-                alert('root@kali:~# ./rooted.sh\nAccès root temporaire accordé !');
-            }, 2000);
-            konamiIndex = 0;
-        }
-    } else {
-        konamiIndex = 0;
-    }
-});
-
-// Random glitch sur le titre
-setInterval(() => {
-    const glitch = document.querySelector('.glitch-kali');
-    if (glitch && Math.random() > 0.9) {
-        glitch.style.textShadow = '2px 0 #ff0000, -2px 0 #00ff00';
-        setTimeout(() => {
-            glitch.style.textShadow = '';
-        }, 100);
-    }
-}, 5000);
